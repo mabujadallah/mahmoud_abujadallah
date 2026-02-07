@@ -33,8 +33,8 @@ body{
   font-family:var(--sans);
   background:var(--bg);
   color:var(--text);
-  line-height:1.75;
-  font-size:15px;
+  line-height:1.7;
+  font-size:13.5px;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
@@ -177,7 +177,43 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;
   padding:7rem 0 4rem;
 }
-.hero__inner{max-width:740px}
+.hero__grid{
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:3rem;
+  align-items:center;
+}
+.hero__content{max-width:700px}
+
+/* Profile photo */
+.hero__photo-wrap{
+  position:relative;
+  display:flex;
+  justify-content:center;
+}
+.hero__photo-frame{
+  width:280px;
+  height:340px;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:2px solid var(--border);
+  transition:border-color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.hero__photo-frame:hover{
+  border-color:var(--green);
+  box-shadow:0 12px 40px rgba(52,211,153,.15);
+}
+.hero__photo{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  filter:grayscale(10%) contrast(1.05);
+  transition:filter .4s var(--ease),transform .4s var(--ease);
+}
+.hero__photo-frame:hover .hero__photo{
+  filter:grayscale(0%) contrast(1.08);
+  transform:scale(1.03);
+}
 .hero__badge{
   display:inline-block;
   font-family:var(--mono);
@@ -193,17 +229,17 @@ img{max-width:100%;display:block}
 }
 .hero__name{
   font-family:var(--serif);
-  font-size:clamp(2.5rem,6.5vw,4.5rem);
+  font-size:clamp(2.2rem,5.5vw,3.8rem);
   font-weight:700;
   color:var(--heading);
   line-height:1.1;
   letter-spacing:-.025em;
-  margin-bottom:1rem;
+  margin-bottom:.75rem;
 }
 .hero__affiliation{
-  font-size:1.05rem;
+  font-size:.92rem;
   color:var(--text);
-  margin-bottom:1rem;
+  margin-bottom:.75rem;
 }
 .hero__affiliation a{
   color:var(--text-bright);
@@ -215,10 +251,10 @@ img{max-width:100%;display:block}
 
 .hero__roles{
   font-family:var(--mono);
-  font-size:.9rem;
+  font-size:.8rem;
   color:var(--green);
   min-height:1.5rem;
-  margin-bottom:1.5rem;
+  margin-bottom:1.25rem;
 }
 .role-cursor{
   display:inline-block;width:2px;height:1em;
@@ -230,20 +266,20 @@ img{max-width:100%;display:block}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 
 .hero__intro{
-  font-size:1.05rem;
+  font-size:.92rem;
   color:var(--text);
-  max-width:600px;
-  line-height:1.85;
-  margin-bottom:2.25rem;
+  max-width:580px;
+  line-height:1.8;
+  margin-bottom:2rem;
 }
 .hero__cta{display:flex;gap:.75rem;flex-wrap:wrap}
 
 /* Buttons */
 .btn{
   display:inline-flex;align-items:center;gap:.5rem;
-  padding:.75rem 1.75rem;
+  padding:.65rem 1.5rem;
   font-family:var(--sans);
-  font-size:.82rem;font-weight:600;
+  font-size:.75rem;font-weight:600;
   letter-spacing:.03em;
   border-radius:999px;
   border:none;cursor:pointer;
@@ -251,14 +287,14 @@ img{max-width:100%;display:block}
   transition:all .3s var(--ease);
 }
 .btn--solid{
-  background:var(--accent);
-  color:#fff;
+  background:var(--green);
+  color:#0c0c0f;
 }
 .btn--solid:hover{
-  background:#5457e5;
-  box-shadow:0 6px 24px var(--accent-glow);
+  background:#2ec28d;
+  box-shadow:0 6px 24px rgba(52,211,153,.25);
   transform:translateY(-1px);
-  color:#fff;
+  color:#0c0c0f;
 }
 .btn--outline{
   background:transparent;
@@ -266,13 +302,13 @@ img{max-width:100%;display:block}
   color:var(--text-bright);
 }
 .btn--outline:hover{
-  border-color:var(--accent);
-  color:var(--accent);
-  background:var(--accent-soft);
+  border-color:var(--green);
+  color:var(--green);
+  background:var(--green-soft);
 }
 .btn--lg{
-  padding:.9rem 2rem;
-  font-size:.85rem;
+  padding:.8rem 1.75rem;
+  font-size:.78rem;
 }
 
 /* Scroll */
@@ -310,7 +346,7 @@ img{max-width:100%;display:block}
 }
 .section-header__title{
   font-family:var(--serif);
-  font-size:1.75rem;font-weight:600;
+  font-size:1.5rem;font-weight:600;
   color:var(--heading);
   letter-spacing:-.01em;
 }
@@ -697,6 +733,10 @@ img{max-width:100%;display:block}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:900px){
+  .hero__grid{grid-template-columns:1fr;text-align:center}
+  .hero__photo-wrap{order:-1;margin-bottom:1rem}
+  .hero__photo-frame{width:200px;height:240px}
+  .hero__cta{justify-content:center}
   .about{grid-template-columns:1fr;gap:2.5rem}
   .proj-grid{grid-template-columns:1fr}
   .pub{grid-template-columns:56px 1fr;gap:1rem}
@@ -706,7 +746,8 @@ img{max-width:100%;display:block}
   .nav__links,.nav__cv-btn{display:none}
   .nav__burger{display:flex}
   .hero{padding:6rem 0 3rem}
-  .hero__name{font-size:2.2rem}
+  .hero__photo-frame{width:160px;height:200px}
+  .hero__name{font-size:1.9rem}
   .section{padding:4rem 0}
   .container{padding:0 1.25rem}
   .timeline{padding-left:1.5rem}
