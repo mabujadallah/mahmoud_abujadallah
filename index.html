@@ -40,7 +40,9 @@
     "https://github.com/mabujadallah",
     "https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/",
     "https://orcid.org/0009-0009-6800-0481",
-    "https://scholar.google.com/citations?user=rj5uozAAAAAJ"
+    "https://scholar.google.com/citations?user=rj5uozAAAAAJ",
+    "https://medium.com/@mabujadallah",
+    "https://www.youtube.com/@mahmoudabujadallah"
   ]
 }
 </script>
@@ -330,8 +332,23 @@
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
+  /* ---------- hero diff: staggered line reveal + headline counter ---------- */
+  .js .pr-card .diff .ln{opacity:0;transform:translateX(-10px)}
+  .js .pr-card.played .diff .ln{animation:lineIn .4s cubic-bezier(.22,.61,.36,1) forwards}
+  .pr-card.played .diff .ln:nth-child(1){animation-delay:.05s}
+  .pr-card.played .diff .ln:nth-child(2){animation-delay:.24s}
+  .pr-card.played .diff .ln:nth-child(3){animation-delay:.46s}
+  .pr-card.played .diff .ln:nth-child(4){animation-delay:.70s}
+  .pr-card.played .diff .ln:nth-child(5){animation-delay:.90s}
+  .pr-card .diff .stat{display:inline-block;min-width:5.6ch}
+  @keyframes lineIn{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    .js .pr-card .diff .ln{opacity:1;transform:none;animation:none}
+  }
+
   :focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:4px}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -660,6 +677,14 @@
       GitHub
     </a>
     <a href="https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://medium.com/@mabujadallah" target="_blank" rel="noopener me">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+      Medium
+    </a>
+    <a href="https://www.youtube.com/@mahmoudabujadallah" target="_blank" rel="noopener me">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.5 15.5v-7l6.3 3.6-6.3 3.4z"/></svg>
+      YouTube
+    </a>
   </div>
 </div>
 
@@ -681,6 +706,37 @@
     el.style.transitionDelay = Math.min(i%4*70,210)+'ms';
     io.observe(el);
   });
+
+  // hero: play the diff lines, then count the headline stat up from 0
+  (function(){
+    const card = document.querySelector('.pr-card');
+    if(!card) return;
+    const stat = card.querySelector('.diff .stat');
+    const target = 46.41;
+    const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const setFinal = ()=>{ if(stat) stat.textContent = target.toFixed(2)+'%'; };
+
+    if(reduce){ card.classList.add('played'); setFinal(); return; }
+    if(stat) stat.textContent = '0.00%';   // avoid a flash of the final value
+
+    function count(){
+      if(!stat) return;
+      const dur = 1100, t0 = performance.now();
+      (function tick(now){
+        const p = Math.min((now - t0)/dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);      // easeOutCubic
+        stat.textContent = (target*eased).toFixed(2)+'%';
+        if(p < 1) requestAnimationFrame(tick); else setFinal();
+      })(t0);
+    }
+
+    function play(){ card.classList.add('played'); setTimeout(count, 420); } // start as line 3 appears
+
+    const ob = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ play(); ob.disconnect(); } });
+    }, {threshold:0.4});
+    ob.observe(card);
+  })();
 </script>
 </body>
 </html>
