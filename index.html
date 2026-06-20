@@ -1,433 +1,686 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mahmoud S. Y. Abujadallah — PhD Researcher in AI for Software Engineering</title>
-  <meta name="description" content="Mahmoud S. Y. Abujadallah — PhD Student at ÉTS Montreal specializing in AI for Software Engineering, Agentic AI, and Large Language Models." />
-  <meta name="author" content="Mahmoud S. Y. Abujadallah" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://mahmoud-abujadallah.github.io/mahmoud_abujadallah/" />
-  
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Mahmoud S. Y. Abujadallah — PhD Researcher" />
-  <meta property="og:description" content="PhD Student at ÉTS Montreal specializing in AI for Software Engineering, Agentic AI, and Large Language Models." />
-  <meta property="og:url" content="https://mahmoud-abujadallah.github.io/mahmoud_abujadallah/" />
-  <meta property="og:image" content="https://mahmoud-abujadallah.github.io/mahmoud_abujadallah/images/profile.jpeg" />
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mahmoud S. Y. Abujadallah — PhD Researcher" />
-  <meta name="twitter:description" content="PhD Student at ÉTS Montreal specializing in AI for Software Engineering, Agentic AI, and Large Language Models." />
-  <meta name="twitter:image" content="https://mahmoud-abujadallah.github.io/mahmoud_abujadallah/images/profile.jpeg" />
-  
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Mahmoud S. Y. Abujadallah",
-      "url": "https://mahmoud-abujadallah.github.io/mahmoud_abujadallah/",
-      "image": "https://mahmoud-abujadallah.github.io/mahmoud_abujadallah/images/profile.jpeg",
-      "jobTitle": "PhD Student",
-      "affiliation": {
-        "@type": "CollegeOrUniversity",
-        "name": "École de technologie supérieure (ÉTS)"
-      },
-      "sameAs": [
-        "https://github.com/mabujadallah",
-        "https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/",
-        "https://scholar.google.com/"
-      ]
-    }
-  </script>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1f2937',
-            accent: '#3b82f6',
-            'accent-hover': '#2563eb',
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-            serif: ['Playfair Display', 'Georgia', 'serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          animation: {
-            fadeIn: 'fadeIn 0.6s ease-in-out',
-            slideUp: 'slideUp 0.6s ease-out',
-            fadeInLeft: 'fadeInLeft 0.6s ease-out',
-          },
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' },
-            },
-            slideUp: {
-              '0%': { opacity: '0', transform: 'translateY(24px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
-            },
-            fadeInLeft: {
-              '0%': { opacity: '0', transform: 'translateX(-16px)' },
-              '100%': { opacity: '1', transform: 'translateX(0)' },
-            },
-          },
-        },
-      },
-    }
-  </script>
-  
-  <!-- Alpine.js -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  
-  <style>
-    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-    body { position: relative; background: #ffffff; color: #1f2937; }
-    main { position: relative; z-index: 2; }
-    .reveal { animation: slideUp 0.6s ease-out forwards; opacity: 0; }
-    .reveal-delay-1 { animation-delay: 0.1s; }
-    .reveal-delay-2 { animation-delay: 0.2s; }
-    .reveal-delay-3 { animation-delay: 0.3s; }
-    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1); }
-    @keyframes slideUp { 0% { opacity: 0; transform: translateY(24px); } 100% { opacity: 1; transform: translateY(0); } }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mahmoud S. Y. Abujadallah — AI for Software Engineering</title>
+<meta name="description" content="PhD researcher at ÉTS Montréal studying AI coding agents, agentic pull requests, and the trustworthiness of AI-generated code.">
+<meta name="author" content="Mahmoud S. Y. Abujadallah">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mabujadallah.github.io/mahmoud_abujadallah/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mahmoud S. Y. Abujadallah — AI for Software Engineering">
+<meta property="og:description" content="PhD researcher studying why AI coding agents get rejected — and how to make them trustworthy teammates.">
+<meta property="og:url" content="https://mabujadallah.github.io/mahmoud_abujadallah/">
+<meta property="og:image" content="https://mabujadallah.github.io/mahmoud_abujadallah/images/profile.jpeg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mahmoud S. Y. Abujadallah — AI for Software Engineering">
+<meta name="twitter:description" content="PhD researcher studying why AI coding agents get rejected — and how to make them trustworthy teammates.">
+<meta name="twitter:image" content="https://mabujadallah.github.io/mahmoud_abujadallah/images/profile.jpeg">
+
+<!-- JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mahmoud S. Y. Abujadallah",
+  "url": "https://mabujadallah.github.io/mahmoud_abujadallah/",
+  "image": "https://mabujadallah.github.io/mahmoud_abujadallah/images/profile.jpeg",
+  "jobTitle": "PhD Researcher",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "École de technologie supérieure (ÉTS)"
+  },
+  "sameAs": [
+    "https://github.com/mabujadallah",
+    "https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/",
+    "https://orcid.org/0009-0009-6800-0481",
+    "https://scholar.google.com/citations?user=rj5uozAAAAAJ"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F8;
+    --paper-raised:#FFFFFF;
+    --ink:#15181F;
+    --ink-soft:#525a68;
+    --ink-faint:#838c9b;
+    --line:#E3E6EC;
+    --line-strong:#cfd4dd;
+    --accent:#6D3BEB;        /* merged-purple, primary */
+    --accent-deep:#5326c4;
+    --accent-soft:rgba(109,59,235,.10);
+    --accept:#157f52;        /* + additions */
+    --accept-soft:rgba(21,127,82,.10);
+    --reject:#c0392b;        /* − deletions */
+    --reject-soft:rgba(192,57,43,.08);
+    --amber:#a86a12;
+
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+
+    --maxw:1080px;
+    --r:14px;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#fff}
+
+  .skip{
+    position:absolute;left:-999px;top:0;z-index:200;
+    background:var(--ink);color:#fff;padding:10px 16px;border-radius:0 0 8px 0;
+    font-family:var(--mono);font-size:13px;
+  }
+  .skip:focus{left:0}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- mono utility label ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{
+    content:"";width:22px;height:1px;background:var(--accent);display:inline-block;
+  }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:100;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.01em}
+  .mono-badge{
+    width:34px;height:34px;border-radius:9px;
+    background:var(--ink);color:#fff;
+    display:grid;place-items:center;
+    font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:-.04em;
+  }
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{
+    font-family:var(--mono);font-size:13px;color:var(--ink-soft);
+    position:relative;padding:4px 0;transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:1.5px;width:0;background:var(--accent);transition:width .25s;
+  }
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{
+    font-family:var(--mono);font-size:13px;font-weight:500;
+    border:1px solid var(--line-strong);border-radius:8px;padding:7px 14px;
+    color:var(--ink);transition:.2s;
+  }
+  .nav-cta:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:760px){.nav-links{display:none}}
+  @media(max-width:560px){.brand span:last-child{display:none}}
+
+  section{scroll-margin-top:74px}
+  #contact{scroll-margin-top:74px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:84px 0 70px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero-grid > *{min-width:0}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(2.3rem,8vw,4.1rem);
+    line-height:1.02;
+    letter-spacing:-.035em;
+    margin:.5rem 0 0;
+    overflow-wrap:break-word;
+  }
+  h1 .sub{display:block;color:var(--ink-faint);font-weight:500;font-size:.42em;letter-spacing:-.01em;margin-top:.85rem}
+  .lead{
+    font-size:1.18rem;color:var(--ink-soft);max-width:34ch;margin:1.5rem 0 0;line-height:1.55;
+  }
+  .lead b{color:var(--ink);font-weight:600}
+
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .btn{
+    font-family:var(--mono);font-size:13.5px;font-weight:500;
+    padding:11px 20px;border-radius:9px;display:inline-flex;align-items:center;gap:9px;
+    transition:transform .18s, box-shadow .18s, background .18s;
+  }
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px -10px var(--accent)}
+  .btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 14px 26px -10px var(--accent)}
+  .btn-ghost{border:1px solid var(--line-strong);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+
+  /* ---------- signature: the PR card ---------- */
+  .pr-card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-radius:var(--r);
+    box-shadow:0 30px 60px -34px rgba(21,24,31,.30), 0 2px 0 rgba(21,24,31,.02);
+    overflow:hidden;
+    font-family:var(--mono);
+    font-size:13.5px;
+  }
+  .pr-head{
+    display:flex;align-items:center;gap:10px;
+    padding:14px 18px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#fbfaff,#fff);
+  }
+  .pr-state{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--accent);color:#fff;
+    padding:4px 11px;border-radius:999px;font-weight:600;font-size:11.5px;letter-spacing:.02em;
+  }
+  .pr-state svg{width:13px;height:13px}
+  .pr-title{color:var(--ink);font-weight:500;font-size:13px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pr-dots{display:flex;gap:5px}
+  .pr-dots i{width:9px;height:9px;border-radius:50%;display:block;background:var(--line-strong)}
+
+  .pr-body{display:flex}
+  .gutter{
+    padding:16px 0;background:#fbfbfd;border-right:1px solid var(--line);
+    color:var(--ink-faint);text-align:right;user-select:none;min-width:42px;
+  }
+  .gutter span{display:block;padding:0 12px;line-height:1.9;font-size:12px}
+  .diff{padding:16px 4px 16px 0;flex:1;overflow:hidden}
+  .diff .ln{display:flex;gap:10px;line-height:1.9;padding:0 14px;white-space:nowrap}
+  .diff .ln.add{background:var(--accept-soft)}
+  .diff .ln.del{background:var(--reject-soft)}
+  .diff .ln.ctx{color:var(--ink-soft)}
+  .diff .mk{width:10px;flex:none;font-weight:600}
+  .diff .add .mk{color:var(--accept)}
+  .diff .del .mk{color:var(--reject)}
+  .diff .add .tx{color:#0f5c3c}
+  .diff .del .tx{color:#9a2a20}
+  .diff .stat{color:var(--accent-deep);font-weight:600}
+  @media(max-width:520px){.diff .ln{white-space:normal}}
+
+  .pr-foot{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:13px 18px;border-top:1px solid var(--line);background:#fcfcfe;
+    color:var(--ink-soft);font-size:12.5px;
+  }
+  .pr-foot .who{color:var(--ink);font-weight:600}
+  .pr-foot .chk{color:var(--accept);display:inline-flex;align-items:center;gap:5px}
+  .pr-foot .chk svg{width:13px;height:13px}
+
+  /* ---------- section frame ---------- */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .sec-head{margin-bottom:38px;max-width:60ch}
+  .sec-head h2{
+    font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,3.4vw,2.3rem);
+    letter-spacing:-.025em;line-height:1.1;margin:.7rem 0 0;
+  }
+  .sec-head p{color:var(--ink-soft);margin:.8rem 0 0;font-size:1.04rem}
+
+  /* ---------- publications ---------- */
+  .pubs{display:flex;flex-direction:column;gap:16px}
+  .pub{
+    background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);
+    padding:22px 24px;display:grid;grid-template-columns:128px 1fr;gap:22px;
+    transition:border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .pub:hover{border-color:var(--line-strong);transform:translateY(-2px);box-shadow:0 18px 40px -28px rgba(21,24,31,.35)}
+  @media(max-width:680px){.pub{grid-template-columns:1fr;gap:14px}}
+  .pub-state{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+  .tag{
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.04em;
+    padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;text-transform:uppercase;
+  }
+  .tag svg{width:12px;height:12px}
+  .tag.merged{background:var(--accent-soft);color:var(--accent-deep)}
+  .tag.open{background:var(--accept-soft);color:var(--accept)}
+  .tag.draft{background:#eef0f3;color:var(--ink-soft)}
+  .tag.venue{background:transparent;color:var(--ink-faint);border:1px dashed var(--line-strong);font-weight:500}
+  .pub h3{font-family:var(--display);font-weight:500;font-size:1.18rem;line-height:1.3;letter-spacing:-.015em;margin:0 0 6px}
+  .pub .authors{color:var(--ink-soft);font-size:.96rem;margin:0 0 4px}
+  .pub .authors .me{color:var(--ink);font-weight:600;border-bottom:2px solid var(--accent-soft)}
+  .pub .meta{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint);margin-top:10px;display:flex;flex-wrap:wrap;gap:14px}
+  .pub .meta a{color:var(--accent-deep);border-bottom:1px solid transparent;transition:border-color .2s}
+  .pub .meta a:hover{border-color:var(--accent-deep)}
+  .finding{
+    margin-top:12px;padding:11px 14px;border-left:3px solid var(--accent);
+    background:var(--accent-soft);border-radius:0 8px 8px 0;font-size:.95rem;color:var(--ink)
+  }
+  .finding b{font-family:var(--mono);font-weight:600;color:var(--accent-deep)}
+
+  /* ---------- timeline ---------- */
+  .timeline{position:relative;margin-left:6px}
+  .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl{position:relative;padding:0 0 30px 38px}
+  .tl:last-child{padding-bottom:0}
+  .tl::before{
+    content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--line-strong);
+  }
+  .tl.now::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+  .tl .when{font-family:var(--mono);font-size:12px;color:var(--ink-faint);letter-spacing:.02em}
+  .tl h3{font-family:var(--display);font-weight:600;font-size:1.12rem;letter-spacing:-.015em;margin:3px 0 2px}
+  .tl .org{color:var(--ink-soft);font-size:.98rem}
+  .tl p{margin:8px 0 0;color:var(--ink-soft);font-size:.96rem;max-width:62ch}
+  .tl ul{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;max-width:64ch}
+  .tl ul li{position:relative;padding-left:18px;color:var(--ink-soft);font-size:.95rem;line-height:1.5}
+  .tl ul li::before{content:"";position:absolute;left:2px;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.55}
+  .tl ul li em{color:var(--ink);font-style:italic}
+
+  /* ---------- two col blocks (funding / education) ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:780px){.cols{grid-template-columns:1fr}}
+  .panel{background:var(--paper-raised);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+  .panel > .eyebrow{margin-bottom:18px}
+  .award{padding:15px 0;border-top:1px dashed var(--line)}
+  .award:first-of-type{border-top:none;padding-top:4px}
+  .award h4{font-family:var(--display);font-weight:600;font-size:1.04rem;letter-spacing:-.01em;margin:0 0 3px;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .award h4 .yr{font-family:var(--mono);font-size:12px;color:var(--ink-faint);font-weight:500}
+  .award p{margin:0;color:var(--ink-soft);font-size:.94rem}
+  .deg .yr{color:var(--accent-deep)}
+
+  /* ---------- contact ---------- */
+  .contact{text-align:center;padding:90px 0 80px}
+  .contact h2{font-family:var(--display);font-weight:600;font-size:clamp(2rem,5vw,3rem);letter-spacing:-.03em;margin:.6rem auto 0;max-width:18ch;line-height:1.05}
+  .contact p{color:var(--ink-soft);max-width:46ch;margin:1.1rem auto 0}
+  .links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:34px}
+  .links a{
+    font-family:var(--mono);font-size:13.5px;
+    border:1px solid var(--line-strong);border-radius:10px;padding:12px 18px;
+    display:inline-flex;align-items:center;gap:9px;transition:.2s;background:var(--paper-raised);
+  }
+  .links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .links a svg{width:15px;height:15px}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--ink-faint)}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:12px}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  :focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:4px}
+</style>
 </head>
-<body class="antialiased">
-  
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50" x-data="{ open: false }">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="#" class="flex items-center space-x-2 font-serif text-xl font-bold text-gray-900">
-          <span>MA</span><span class="text-blue-500">.</span>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="mono-badge">MA</span>
+      <span>Mahmoud&nbsp;Abujadallah</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#recognition">Recognition</a>
+      <a href="#about">About</a>
+    </nav>
+    <a class="nav-cta" href="mailto:m.abujadallah@gmail.com">Get in touch</a>
+  </div>
+</header>
+
+<main id="main">
+<a id="top"></a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">AI for Software Engineering</span>
+      <h1>Mahmoud Abujadallah
+        <span class="sub">PhD researcher · ÉTS Montréal</span>
+      </h1>
+      <p class="lead">I study why AI coding agents get <b>rejected</b> — and what it takes to make autonomous, LLM-based systems trustworthy teammates.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#research">Read the research
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="#about" class="text-sm font-medium text-gray-600 hover:text-blue-500 transition-colors">About</a>
-          <a href="#experience" class="text-sm font-medium text-gray-600 hover:text-blue-500 transition-colors">Experience</a>
-          <a href="#publications" class="text-sm font-medium text-gray-600 hover:text-blue-500 transition-colors">Publications</a>
-          <a href="#projects" class="text-sm font-medium text-gray-600 hover:text-blue-500 transition-colors">Projects</a>
-          <a href="#contact" class="px-4 py-2 bg-blue-500 text-white rounded-full text-sm font-medium hover:bg-blue-600 transition-colors">Contact</a>
-        </div>
-        <button @click="open = !open" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        </button>
-      </div>
-      <div x-show="open" @click.away="open = false" class="md:hidden pb-4 space-y-2">
-        <a href="#about" @click="open = false" class="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">About</a>
-        <a href="#experience" @click="open = false" class="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">Experience</a>
-        <a href="#publications" @click="open = false" class="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">Publications</a>
-        <a href="#projects" @click="open = false" class="block px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">Projects</a>
-        <a href="#contact" @click="open = false" class="block px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 rounded-lg">Contact</a>
+        <a class="btn btn-ghost" href="mailto:m.abujadallah@gmail.com">Get in touch</a>
       </div>
     </div>
-  </nav>
-  
-  <main class="pt-16">
-    <section class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto w-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div class="space-y-8">
-            <div class="reveal space-y-4">
-              <div class="inline-block px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-medium">PhD Researcher</div>
-              <h1 class="text-5xl sm:text-6xl font-serif font-bold leading-tight text-gray-900">Mahmoud S. Y.<br />Abujadallah</h1>
-              <p class="text-xl text-gray-600">AI for Software Engineering • Agentic AI • Large Language Models</p>
-            </div>
-            <div class="reveal reveal-delay-1 space-y-4">
-              <p class="text-lg text-gray-600 leading-relaxed max-w-lg">PhD Student at <a href="https://www.etsmtl.ca/" class="font-semibold text-blue-500 hover:text-blue-600">ÉTS Montreal</a>, researching how AI agents transform software engineering and investigating developer acceptance of AI-generated contributions in open-source projects.</p>
-            </div>
-            <div class="reveal reveal-delay-2 flex flex-wrap gap-4">
-              <a href="#publications" class="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors">View Publications</a>
-              <a href="mailto:m.abujadallah@gmail.com" class="px-6 py-3 border-2 border-gray-300 text-gray-900 rounded-lg font-medium hover:border-blue-500 hover:text-blue-500 transition-colors">Get in Touch</a>
-            </div>
-            <div class="reveal reveal-delay-3 flex gap-6 pt-4">
-              <a href="https://github.com/mabujadallah" target="_blank" rel="noopener noreferrer me" class="text-gray-400 hover:text-blue-500 transition-colors" title="GitHub"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-              <a href="https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/" target="_blank" rel="noopener noreferrer me" class="text-gray-400 hover:text-blue-500 transition-colors" title="LinkedIn"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
-              <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 transition-colors" title="Google Scholar"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 1.5c2.5 0 4.8 1 6.5 2.6L12 9.2 5.5 4.1C7.2 2.5 9.5 1.5 12 1.5zm0 21c-2.5 0-4.8-1-6.5-2.6L12 14.8l6.5 5.1c-1.7 1.6-4 2.6-6.5 2.6z"/></svg></a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2 hidden md:block">
-            <div class="relative">
-              <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl transform -rotate-2 opacity-20"></div>
-              <img src="images/profile.jpeg" alt="Mahmoud S. Y. Abujadallah" class="relative rounded-2xl w-full object-cover shadow-2xl" />
-            </div>
-          </div>
+
+    <!-- signature PR card -->
+    <div class="pr-card reveal" aria-label="Research summary styled as a pull request">
+      <div class="pr-head">
+        <span class="pr-state">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.25a1.75 1.75 0 1 0-2.5 1.58v6.34a1.75 1.75 0 1 0 1.5 0V4.83A1.75 1.75 0 0 0 5 3.25Zm6.75 8.92V6.5A2.5 2.5 0 0 0 9.25 4H8.3l1.1-1.1a.75.75 0 0 0-1.06-1.06L5.97 4.22a.75.75 0 0 0 0 1.06l2.37 2.38A.75.75 0 1 0 9.4 6.6L8.3 5.5h.95a1 1 0 0 1 1 1v5.67a1.75 1.75 0 1 0 1.5 0Z"/></svg>
+          Merged
+        </span>
+        <span class="pr-title">feat: trustworthy AI coding agents</span>
+        <span class="pr-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      </div>
+      <div class="pr-body">
+        <div class="gutter" aria-hidden="true"><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span></div>
+        <div class="diff">
+          <div class="ln ctx"><span class="mk"></span><span class="tx">research/agent-prs/</span></div>
+          <div class="ln add"><span class="mk">+</span><span class="tx">study agent PR accept / reject signals</span></div>
+          <div class="ln add"><span class="mk">+</span><span class="tx"><span class="stat">46.41%</span> of agent fixes rejected</span></div>
+          <div class="ln del"><span class="mk">−</span><span class="tx">wasted review on discarded fixes</span></div>
+          <div class="ln ctx"><span class="mk"></span><span class="tx">// Copilot · Devin · Cursor · Claude</span></div>
         </div>
       </div>
-    </section>
-    
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-12">
-          <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">About</h2>
-          <div class="w-16 h-1 bg-blue-500"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div class="space-y-6 reveal">
-            <p class="text-lg text-gray-700 leading-relaxed">I am a PhD student at <a href="https://www.etsmtl.ca/" class="font-semibold text-blue-500 hover:text-blue-600">ÉTS Montreal</a>, conducting research in <strong>AI for Software Engineering</strong> and <strong>Agentic AI</strong>. My work investigates how AI agents generate, modify, and maintain source code — and why human developers accept or reject these automated contributions.</p>
-            <p class="text-lg text-gray-700 leading-relaxed">Prior to my doctoral studies, I served as <strong>Head of Computer Center Department</strong> and <strong>Lecturer</strong> at <a href="https://www.ucas.edu.ps/" class="font-semibold text-blue-500 hover:text-blue-600">UCAS</a> in Gaza, Palestine, leading digital transformation and teaching Software Engineering, Databases, and Programming.</p>
-            <p class="text-lg text-gray-700 leading-relaxed">I hold an <strong>M.Sc. in Data Science</strong> with research spanning AI for SE, LLMs, Prompt Engineering, and Educational Data Mining.</p>
-          </div>
-          <div class="reveal reveal-delay-1 space-y-8">
-            <div>
-              <h3 class="text-sm uppercase font-semibold text-blue-500 mb-4">Languages & Frameworks</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Python</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Java</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">SQL</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">JavaScript</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">HTML/CSS</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Android</span>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-sm uppercase font-semibold text-blue-500 mb-4">AI & Machine Learning</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">LLMs / NLP</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">PyTorch</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">TensorFlow</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Hugging Face</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Scikit-learn</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Deep Learning</span>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-sm uppercase font-semibold text-blue-500 mb-4">Research & Tools</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Prompt Engineering</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Jupyter</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">Git/GitHub</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">VS Code</span>
-                <span class="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm">LaTeX</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="pr-foot">
+        <span>author&nbsp; <span class="who">Mahmoud Abujadallah</span></span>
+        <span>·</span>
+        <span class="chk">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-6.5 6.5a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 1 1 1.06-1.06l2.47 2.47 5.97-5.97a.75.75 0 0 1 1.06 0Z"/></svg>
+          MSR &rsquo;26 · ICSE
+        </span>
       </div>
-    </section>
-    
-    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-12">
-          <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Experience & Education</h2>
-          <div class="w-16 h-1 bg-blue-500"></div>
-        </div>
-        <div class="space-y-6">
-          <div class="reveal card-hover border-l-4 border-blue-500 bg-white p-6 rounded-r-lg hover:shadow-lg">
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="text-xl font-bold text-gray-900">PhD Student — AI for Software Engineering</h3>
-              <span class="text-sm text-gray-500">Oct 2025 — Present</span>
-            </div>
-            <p class="text-blue-600 font-semibold mb-2">ÉTS Montreal, Canada</p>
-            <p class="text-gray-700">Doctoral research on AI for Software Engineering investigating AI agents in code generation and open-source contribution acceptance.</p>
-          </div>
-          <div class="reveal reveal-delay-1 card-hover border-l-4 border-gray-300 bg-white p-6 rounded-r-lg hover:shadow-lg">
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="text-xl font-bold text-gray-900">Head of Computer Center Department</h3>
-              <span class="text-sm text-gray-500">Jan 2025 — Sep 2025</span>
-            </div>
-            <p class="text-blue-600 font-semibold mb-2">UCAS, Gaza</p>
-            <p class="text-gray-700">Managed IT budgets, led infrastructure development, and spearheaded Oracle-to-web migration for 500+ users.</p>
-          </div>
-          <div class="reveal reveal-delay-2 card-hover border-l-4 border-gray-300 bg-white p-6 rounded-r-lg hover:shadow-lg">
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="text-xl font-bold text-gray-900">Lecturer, Information Technology</h3>
-              <span class="text-sm text-gray-500">Sep 2023 — Sep 2025</span>
-            </div>
-            <p class="text-blue-600 font-semibold mb-2">UCAS, Gaza</p>
-            <p class="text-gray-700">Taught Software Engineering, Databases, and Programming. Designed curricula and supervised graduation projects.</p>
-          </div>
-          <div class="reveal reveal-delay-3 card-hover border-l-4 border-blue-500 bg-white p-6 rounded-r-lg hover:shadow-lg">
-            <div class="flex items-start justify-between mb-2">
-              <h3 class="text-xl font-bold text-gray-900">M.Sc. in Data Science</h3>
-              <span class="text-sm text-gray-500">2021 — 2025</span>
-            </div>
-            <p class="text-blue-600 font-semibold mb-2">Islamic University of Gaza</p>
-            <p class="text-gray-700"><em>Thesis: "Evaluating Large Language Models for Automated Essay Scoring."</em></p>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="publications" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-12">
-          <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Publications & Research</h2>
-          <div class="w-16 h-1 bg-blue-500"></div>
-        </div>
-        <div class="space-y-6">
-          <div class="reveal card-hover bg-white p-6 rounded-lg border border-gray-200">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-              <div>
-                <span class="text-sm text-gray-500">2024</span>
-                <h3 class="text-xl font-bold text-gray-900 mt-1">Predicting Student Retention in Smart Learning Environments</h3>
-              </div>
-              <span class="mt-2 sm:mt-0 px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded">Best Paper</span>
-            </div>
-            <p class="text-gray-600 mb-3">Presented at ICBT Istanbul 2023 • Abujadallah, M. S., & Abudalfa, S. I. (2024).</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Machine Learning</span>
-              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Student Retention</span>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-1 card-hover bg-white p-6 rounded-lg border border-gray-200">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-              <div>
-                <span class="text-sm text-gray-500">2025</span>
-                <h3 class="text-xl font-bold text-gray-900 mt-1"><a href="https://doi.org/10.20944/preprints202511.1429.v1" target="_blank" class="text-blue-600 hover:text-blue-700">Evaluating Open-Source LLMs for Automated Essay Scoring</a></h3>
-              </div>
-              <span class="mt-2 sm:mt-0 px-3 py-1 bg-gray-100 text-gray-700 text-sm font-semibold rounded">Preprint</span>
-            </div>
-            <p class="text-gray-600 mb-3">Abujadallah, M., Saad, M., & Abudalfa, S. (2025).</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">LLMs</span>
-              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Prompt Engineering</span>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2 card-hover bg-white p-6 rounded-lg border border-gray-200">
-            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-3">
-              <div>
-                <span class="text-sm text-gray-500">2025</span>
-                <h3 class="text-xl font-bold text-gray-900 mt-1">Understanding Rejection of AI-Generated Pull Requests</h3>
-              </div>
-              <span class="mt-2 sm:mt-0 px-3 py-1 bg-purple-100 text-purple-700 text-sm font-semibold rounded">MSR 2026</span>
-            </div>
-            <p class="text-gray-600 mb-3">Abujadallah, M., Sayagh, M., & Arabat, A. (2025). Mining challenge co-located with ICSE 2026.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">AI for SE</span>
-              <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Agentic AI</span>
-            </div>
-          </div>
-        </div>
-        <div class="reveal reveal-delay-3 mt-12 p-6 bg-blue-50 rounded-lg border border-blue-200">
-          <h3 class="text-lg font-bold text-gray-900 mb-4">Research Interests</h3>
-          <div class="flex flex-wrap gap-3">
-            <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm">AI for SE</span>
-            <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm">Agentic AI</span>
-            <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm">LLMs</span>
-            <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm">Prompt Engineering</span>
-            <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm">Essay Scoring</span>
-            <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm">Smart Learning</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-12">
-          <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Selected Projects</h2>
-          <div class="w-16 h-1 bg-blue-500"></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="reveal card-hover bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <div class="p-6">
-              <span class="text-xs font-semibold text-blue-600">RESEARCH</span>
-              <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2"><a href="https://github.com/mabujadallah/APR" target="_blank" class="hover:text-blue-600">Agentic PR Analysis</a></h3>
-              <p class="text-gray-700 mb-4">Empirical analysis of AI-generated PR fixes and rejection patterns in open-source software.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">Python</span>
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">AI for SE</span>
-              </div>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-1 card-hover bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <div class="p-6">
-              <span class="text-xs font-semibold text-blue-600">THESIS</span>
-              <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2">LLM Essay Scoring Pipeline</h3>
-              <p class="text-gray-700 mb-4">End-to-end automated essay scoring using open-source LLMs with optimized prompting strategies.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">Python</span>
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">LLMs</span>
-              </div>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2 card-hover bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <div class="p-6">
-              <span class="text-xs font-semibold text-blue-600">INDUSTRY</span>
-              <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2">Enterprise System Migration</h3>
-              <p class="text-gray-700 mb-4">Digital transformation — Oracle to web-based platforms for 500+ users at UCAS.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">SQL</span>
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">Architecture</span>
-              </div>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-3 card-hover bg-white border border-gray-200 rounded-lg overflow-hidden">
-            <div class="p-6">
-              <span class="text-xs font-semibold text-blue-600">MOBILE</span>
-              <h3 class="text-xl font-bold text-gray-900 mt-2 mb-2"><a href="https://github.com/mabujadallah/Android_Puzzle" target="_blank" class="hover:text-blue-600">Android Puzzle Game</a></h3>
-              <p class="text-gray-700 mb-4">Mobile puzzle game with gesture controls, dynamic layouts, and progressive difficulty.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">Java</span>
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded">Android</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
-      <div class="max-w-3xl mx-auto text-center">
-        <div class="mb-12">
-          <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">Let's Connect</h2>
-          <div class="w-16 h-1 bg-blue-500 mx-auto"></div>
-        </div>
-        <div class="reveal space-y-8">
-          <p class="text-xl text-gray-700 leading-relaxed">I welcome inquiries about research collaborations, academic positions, and discussions on AI for Software Engineering and Agentic AI.</p>
-          <a href="mailto:m.abujadallah@gmail.com" class="inline-block px-8 py-4 bg-blue-500 text-white font-bold text-lg rounded-lg hover:bg-blue-600 transition-colors">m.abujadallah@gmail.com</a>
-          <div class="reveal reveal-delay-1 mt-12 pt-12 border-t border-gray-200 space-y-4">
-            <p class="text-gray-600 font-semibold">Follow Mahmoud S. Y. Abujadallah on:</p>
-            <div class="flex justify-center gap-8 flex-wrap">
-              <a href="https://github.com/mabujadallah" target="_blank" rel="noopener noreferrer me" class="text-gray-400 hover:text-blue-500 transition-colors text-center">
-                <svg class="w-8 h-8 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                <span class="block text-sm text-gray-600 mt-2 font-medium">GitHub</span>
-              </a>
-              <a href="https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/" target="_blank" rel="noopener noreferrer me" class="text-gray-400 hover:text-blue-500 transition-colors text-center">
-                <svg class="w-8 h-8 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
-                <span class="block text-sm text-gray-600 mt-2 font-medium">LinkedIn</span>
-              </a>
-              <a href="https://scholar.google.com/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-blue-500 transition-colors text-center">
-                <svg class="w-8 h-8 inline-block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 1.5c2.5 0 4.8 1 6.5 2.6L12 9.2 5.5 4.1C7.2 2.5 9.5 1.5 12 1.5zm0 21c-2.5 0-4.8-1-6.5-2.6L12 14.8l6.5 5.1c-1.7 1.6-4 2.6-6.5 2.6z"/></svg>
-                <span class="block text-sm text-gray-600 mt-2 font-medium">Scholar</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  
-  <footer class="border-t border-gray-200 bg-white py-8">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
-      <p>&copy; 2026 Mahmoud S. Y. Abujadallah. All rights reserved.</p>
-      <p class="mt-2 text-sm">ÉTS Montreal · Gaza, Palestine</p>
     </div>
-  </footer>
-  
-  <script>
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  </div>
+</div>
+
+<!-- RESEARCH / PUBLICATIONS -->
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Publications</span>
+      <h2>Papers, tracked like pull requests</h2>
+      <p>Each contribution carries its real state — merged into a venue, open for review, or a public draft.</p>
+    </div>
+
+    <div class="pubs">
+      <!-- merged -->
+      <article class="pub reveal">
+        <div class="pub-state">
+          <span class="tag merged">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.25a1.75 1.75 0 1 0-2.5 1.58v6.34a1.75 1.75 0 1 0 1.5 0V4.83A1.75 1.75 0 0 0 5 3.25Zm6.75 8.92V6.5A2.5 2.5 0 0 0 9.25 4H8.3l1.1-1.1a.75.75 0 0 0-1.06-1.06L5.97 4.22a.75.75 0 0 0 0 1.06l2.37 2.38A.75.75 0 1 0 9.4 6.6L8.3 5.5h.95a1 1 0 0 1 1 1v5.67a1.75 1.75 0 1 0 1.5 0Z"/></svg>
+            Merged
+          </span>
+          <span class="tag venue">MSR 2026</span>
+        </div>
+        <div>
+          <h3>Understanding the Rejection of Fixes Generated by Agentic Pull Requests — Insights from the AIDev Dataset</h3>
+          <p class="authors"><span class="me">Abujadallah, M.</span>, Arabat, A., &amp; Sayagh, M.</p>
+          <p class="authors">Mining Software Repositories (MSR) 2026 Mining Challenge, co-located with ICSE 2026.</p>
+          <div class="finding">A qualitative study of 306 non-merged PRs surfaced <b>14 rejection reasons</b> across four categories — with <b>46.41%</b> of agent-proposed fixes ultimately rejected.</div>
+          <div class="meta">
+            <span>arXiv:2606.13468</span>
+            <a href="https://arxiv.org/abs/2606.13468" target="_blank" rel="noopener">Read preprint →</a>
+            <span>To appear · ACM DL</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- merged book chapter -->
+      <article class="pub reveal">
+        <div class="pub-state">
+          <span class="tag merged">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.25a1.75 1.75 0 1 0-2.5 1.58v6.34a1.75 1.75 0 1 0 1.5 0V4.83A1.75 1.75 0 0 0 5 3.25Zm6.75 8.92V6.5A2.5 2.5 0 0 0 9.25 4H8.3l1.1-1.1a.75.75 0 0 0-1.06-1.06L5.97 4.22a.75.75 0 0 0 0 1.06l2.37 2.38A.75.75 0 1 0 9.4 6.6L8.3 5.5h.95a1 1 0 0 1 1 1v5.67a1.75 1.75 0 1 0 1.5 0Z"/></svg>
+            Merged
+          </span>
+          <span class="tag venue">Springer · Best Paper</span>
+        </div>
+        <div>
+          <h3>Predicting Student Retention in Smart Learning Environments Using Machine Learning</h3>
+          <p class="authors"><span class="me">Abujadallah, M. S.</span>, &amp; Abudalfa, S. I.</p>
+          <p class="authors">In <em>Technical and Vocational Education and Training: Issues, Concerns and Prospects</em>, vol. 39. Springer (2024).</p>
+          <div class="meta">
+            <span>Best Paper Award · ICBT Istanbul 2023</span>
+            <a href="https://doi.org/10.1007/978-981-99-7798-7_12" target="_blank" rel="noopener">DOI →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- open / under review -->
+      <article class="pub reveal">
+        <div class="pub-state">
+          <span class="tag open">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><circle cx="5" cy="3.5" r="1.75" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="5" cy="12.5" r="1.75" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5 5.25v5.5" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="12.5" r="1.75" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M11 10.75V8A3 3 0 0 0 8 5H6.5" stroke="currentColor" stroke-width="1.3" fill="none"/></svg>
+            Open · in review
+          </span>
+          <span class="tag venue">Journal</span>
+        </div>
+        <div>
+          <h3>Morphology-guided Prompt Engineering for Arabic Dialect Translation with Arabic LLMs</h3>
+          <p class="authors"><span class="me">Abujadallah, M. S.</span>, Abujadallah, A. S., Abudalfa, S. I., &amp; Barrot, J.</p>
+          <p class="authors">Submitted to an international peer-reviewed journal (2025).</p>
+        </div>
+      </article>
+
+      <!-- draft / preprint -->
+      <article class="pub reveal">
+        <div class="pub-state">
+          <span class="tag draft">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.25a1.75 1.75 0 1 0-2.5 1.58v6.34a1.75 1.75 0 1 0 1.5 0V4.83A1.75 1.75 0 0 0 5 3.25Zm6 0a1.75 1.75 0 1 0-2.5 1.58v6.34a1.75 1.75 0 1 0 1.5 0V4.83A1.75 1.75 0 0 0 11 3.25Z"/></svg>
+            Draft
+          </span>
+          <span class="tag venue">Preprint</span>
+        </div>
+        <div>
+          <h3>Evaluating Open-Source LLMs for Automated Essay Scoring: The Critical Role of Prompt Design</h3>
+          <p class="authors"><span class="me">Abujadallah, M.</span>, Saad, M., &amp; Abudalfa, S.</p>
+          <p class="authors">Preprints (2025) — drawn from the master&rsquo;s thesis.</p>
+          <div class="meta">
+            <a href="https://doi.org/10.20944/preprints202511.1429.v1" target="_blank" rel="noopener">DOI →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Experience</span>
+      <h2>Roles &amp; responsibilities</h2>
+      <p>Doctoral research at ÉTS Montréal, plus building, teaching, and leading IT at UCAS in Gaza.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl now reveal">
+        <div class="when">Sep 2025 — Present</div>
+        <h3>PhD Researcher, Software Engineering</h3>
+        <div class="org">École de technologie supérieure (ÉTS), Université du Québec — Montréal</div>
+        <ul>
+          <li>Empirical research on agentic AI systems and autonomous code generation, measuring the reliability of AI-generated code and agentic pull requests.</li>
+          <li>First-author study (MSR 2026) on why maintainers reject agent-proposed fixes.</li>
+          <li>Investigating prompt engineering and LLM-based agents in real development workflows.</li>
+        </ul>
+      </div>
+      <div class="tl reveal">
+        <div class="when">Jan 2025 — May 2026</div>
+        <h3>Head of Computer Center Department</h3>
+        <div class="org">University College of Applied Sciences (UCAS) — Gaza</div>
+        <ul>
+          <li>Led three core units: Programming, Networking, and Maintenance &amp; Technical Support.</li>
+          <li>Owned annual budgeting, infrastructure development, and IT policy formulation.</li>
+          <li>Directed an Oracle-to-web migration serving 500+ users and guided new IT solutions.</li>
+        </ul>
+      </div>
+      <div class="tl reveal">
+        <div class="when">Sep 2023 — Present</div>
+        <h3>Lecturer, Information Technology</h3>
+        <div class="org">University College of Applied Sciences (UCAS) — Gaza</div>
+        <ul>
+          <li>Teach Software Engineering, Database Systems, Networking, and Programming (Java, Python, Android).</li>
+          <li>Design syllabi, projects, and lab exercises; supervise graduation projects.</li>
+          <li>Integrate LMS tools (Moodle, Google Classroom) and contribute to curriculum design.</li>
+        </ul>
+      </div>
+      <div class="tl reveal">
+        <div class="when">2021 — 2023</div>
+        <h3>Teaching Assistant (Part-Time)</h3>
+        <div class="org">UCAS &amp; Al-Azhar University — Gaza</div>
+        <ul>
+          <li>Ran labs in programming and Android development (Android Studio, Java).</li>
+          <li>Graded assessments with consistent rubrics; prepared exams and lab documentation.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Education</span>
+      <h2>Academic background</h2>
+      <p>From a diploma in Gaza to a doctorate in Montréal — a decade of computer science and software engineering.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl now reveal">
+        <div class="when">Sep 2025 — Present</div>
+        <h3>Ph.D. in Software Engineering</h3>
+        <div class="org">École de technologie supérieure (ÉTS), Université du Québec — Montréal</div>
+        <ul>
+          <li>Research focus: AI for Software Engineering, with emphasis on agentic AI and autonomous code generation.</li>
+          <li>Funded by the FRQ "Science en Exil" doctoral fellowship (CAD $56,250, 2025–2028).</li>
+        </ul>
+      </div>
+      <div class="tl reveal">
+        <div class="when">2021 — 2025</div>
+        <h3>M.Sc. in Information Technology</h3>
+        <div class="org">Islamic University of Gaza</div>
+        <ul>
+          <li>Focused on machine learning, data science, and deep learning.</li>
+          <li><em>Thesis: "Evaluating Open-Source LLMs for Automated Essay Scoring: The Critical Role of Prompt Design."</em></li>
+        </ul>
+      </div>
+      <div class="tl reveal">
+        <div class="when">2018 — 2021</div>
+        <h3>B.Sc. in Mobile Computing &amp; Smart Device Applications</h3>
+        <div class="org">Islamic University of Gaza</div>
+        <ul>
+          <li>Specialized in mobile app development and embedded systems.</li>
+          <li>Graduated with distinction.</li>
+        </ul>
+      </div>
+      <div class="tl reveal">
+        <div class="when">2016 — 2018</div>
+        <h3>Diploma in Database &amp; Programming</h3>
+        <div class="org">University College of Applied Sciences (UCAS) — Gaza</div>
+        <ul>
+          <li>Foundations in software development and database systems.</li>
+          <li>Built several practical web, desktop, and mobile projects.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section id="recognition">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Funding &amp; recognition</span>
+      <h2>Backed work</h2>
+    </div>
+    <div class="cols">
+      <div class="panel reveal">
+        <span class="eyebrow">Fellowships &amp; grants</span>
+        <div class="award">
+          <h4>Science en Exil Scholarship — Doctoral <span class="yr">2025–28</span></h4>
+          <p>Competitive, merit-based doctoral funding from the Fonds de recherche du Québec (FRQ), CAD&nbsp;$56,250 over three years.</p>
+        </div>
+        <div class="award">
+          <h4>Best Paper Award <span class="yr">2023</span></h4>
+          <p>International Conference on Business and Technology (ICBT Istanbul) — machine learning for education.</p>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <span class="eyebrow">Supervised &amp; awarded</span>
+        <div class="award">
+          <h4>SILO — Sign Language Translation <span class="yr">2026</span></h4>
+          <p>Supervised the student project that won 1st Place, Secure Digital Innovation 2026 (PCSAi) — bidirectional ASL↔text via deep learning, computer vision, and a real-time 3D avatar.</p>
+        </div>
+        <div class="award">
+          <h4>Reviewer — IE2026 Doctoral Colloquium <span class="yr">2026</span></h4>
+          <p>Peer review for the 22nd International Conference on Intelligent Environments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal" style="max-width:72ch">
+      <span class="eyebrow">About</span>
+      <h2>Software engineering, with the AI held to account</h2>
+      <p>AI coding agents now open pull requests, refactor code, and propose fixes — yet a large share of that work is quietly discarded. My research treats those rejections as data: what does the gap between what an agent produces and what a maintainer will accept tell us about building AI that developers can actually trust? I work empirically, grounded in real repositories and real review decisions, across AI for software engineering, automated program repair, and large language models.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact wrap" id="contact">
+  <span class="eyebrow" style="justify-content:center">Open to collaboration</span>
+  <h2>Let&rsquo;s build trustworthy AI for software</h2>
+  <p>I welcome inquiries about research collaborations, academic positions, and anything at the intersection of agentic AI and software engineering.</p>
+  <div class="links">
+    <a href="mailto:m.abujadallah@gmail.com">
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="m2 4 6 4.5L14 4" stroke="currentColor" stroke-width="1.4"/></svg>
+      Email
+    </a>
+    <a href="https://scholar.google.com/citations?user=rj5uozAAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+    <a href="https://orcid.org/0009-0009-6800-0481" target="_blank" rel="noopener">ORCID</a>
+    <a href="https://github.com/mabujadallah" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.53 15.59c.4.07.55-.17.55-.38v-1.5c-2.23.49-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.96 0-.87.31-1.59.83-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.52.56.83 1.28.83 2.15 0 3.08-1.87 3.76-3.65 3.96.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 8 0Z"/></svg>
+      GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 Mahmoud S. Y. Abujadallah</span>
+    <span>ÉTS Montréal · Gaza, Palestine</span>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay = Math.min(i%4*70,210)+'ms';
+    io.observe(el);
+  });
+</script>
 </body>
 </html>

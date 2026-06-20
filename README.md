@@ -4,9 +4,7 @@ A modern, responsive personal portfolio website showcasing my academic and profe
 
 ## Live Site
 
-Visit: **https://mahmoud-abujadallah.github.io/mahmoud_abujadallah/**
-
-> Update the URL above with your actual GitHub username.
+Visit: **https://mabujadallah.github.io/mahmoud_abujadallah/**
 
 ## Features
 
