@@ -49,7 +49,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&family=Cairo:wght@600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F5F6F8;
@@ -387,6 +387,22 @@
   .icon-btn .ic-sun{display:none}
   html[data-theme="dark"] .icon-btn .ic-moon{display:none}
   html[data-theme="dark"] .icon-btn .ic-sun{display:block}
+  #langToggle{font-family:var(--mono);font-weight:600;letter-spacing:.02em}
+
+  /* ---------- RTL / Arabic ---------- */
+  [dir="rtl"]{--display:'Cairo','Space Grotesk',sans-serif;--body:'Tajawal','Inter',sans-serif}
+  [dir="rtl"] body{font-size:17.5px;line-height:1.8}
+  [dir="rtl"] .timeline{margin-left:0;margin-right:6px}
+  [dir="rtl"] .timeline::before{left:auto;right:7px}
+  [dir="rtl"] .tl{padding:0 38px 30px 0}
+  [dir="rtl"] .tl::before{left:auto;right:0}
+  [dir="rtl"] .tl ul li{padding-left:0;padding-right:18px}
+  [dir="rtl"] .tl ul li::before{left:auto;right:2px}
+  [dir="rtl"] .finding{border-left:0;border-right:3px solid var(--accent);border-radius:8px 0 0 8px}
+  [dir="rtl"] .award h4{flex-direction:row}
+  /* keep code, dates and the PR card left-to-right */
+  [dir="rtl"] .pr-card,[dir="rtl"] .diff,[dir="rtl"] .gutter,[dir="rtl"] .when,[dir="rtl"] .award h4 .yr,[dir="rtl"] .pub .meta{direction:ltr}
+  [dir="rtl"] .award h4 .yr{text-align:left}
 
   :focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:4px}
 </style>
@@ -397,12 +413,15 @@
       var t = localStorage.getItem('theme');
       if(!t) t = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
       if(t === 'dark') document.documentElement.setAttribute('data-theme','dark');
+      var l = localStorage.getItem('lang') || 'en';
+      document.documentElement.lang = l;
+      document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
     }catch(e){}
   })();
 </script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 <header class="nav">
   <div class="wrap nav-inner">
@@ -411,18 +430,19 @@
       <span>Mahmoud&nbsp;Abujadallah</span>
     </a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#research">Research</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#recognition">Recognition</a>
-      <a href="#about">About</a>
+      <a href="#research" data-i18n="nav.research">Research</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <a href="#education" data-i18n="nav.education">Education</a>
+      <a href="#recognition" data-i18n="nav.recognition">Recognition</a>
+      <a href="#about" data-i18n="nav.about">About</a>
     </nav>
     <div class="nav-tools">
+      <button class="icon-btn" id="langToggle" type="button" aria-label="Switch language to Arabic" title="العربية">ع</button>
       <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme" aria-pressed="false">
         <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
       </button>
-      <a class="nav-cta" href="mailto:m.abujadallah@gmail.com">Get in touch</a>
+      <a class="nav-cta" href="mailto:m.abujadallah@gmail.com" data-i18n="nav.cta">Get in touch</a>
     </div>
   </div>
 </header>
@@ -434,16 +454,16 @@
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">AI for Software Engineering</span>
-      <h1>Mahmoud Abujadallah
-        <span class="sub">PhD researcher · ÉTS Montréal</span>
+      <span class="eyebrow" data-i18n="hero.eyebrow">AI for Software Engineering</span>
+      <h1><span data-i18n="hero.name">Mahmoud Abujadallah</span>
+        <span class="sub" data-i18n="hero.sub">PhD researcher · ÉTS Montréal</span>
       </h1>
-      <p class="lead">I study why AI coding agents get <b>rejected</b> — and what it takes to make autonomous, LLM-based systems trustworthy teammates.</p>
+      <p class="lead" data-i18n="hero.lead">I study why AI coding agents get <b>rejected</b> — and what it takes to make autonomous, LLM-based systems trustworthy teammates.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#research">Read the research
+        <a class="btn btn-primary" href="#research"><span data-i18n="hero.btnRead">Read the research</span>
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a class="btn btn-ghost" href="mailto:m.abujadallah@gmail.com">Get in touch</a>
+        <a class="btn btn-ghost" href="mailto:m.abujadallah@gmail.com" data-i18n="nav.cta">Get in touch</a>
       </div>
     </div>
 
@@ -483,9 +503,9 @@
 <section id="research">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Publications</span>
-      <h2>Papers, tracked like pull requests</h2>
-      <p>Each contribution carries its real state — merged into a venue, open for review, or a public draft.</p>
+      <span class="eyebrow" data-i18n="pub.eyebrow">Publications</span>
+      <h2 data-i18n="pub.h2">Papers, tracked like pull requests</h2>
+      <p data-i18n="pub.intro">Each contribution carries its real state — merged into a venue, open for review, or a public draft.</p>
     </div>
 
     <div class="pubs">
@@ -573,49 +593,49 @@
 <section id="experience">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Experience</span>
-      <h2>Roles &amp; responsibilities</h2>
-      <p>Doctoral research at ÉTS Montréal, plus building, teaching, and leading IT at UCAS in Gaza.</p>
+      <span class="eyebrow" data-i18n="exp.eyebrow">Experience</span>
+      <h2 data-i18n="exp.h2">Roles &amp; responsibilities</h2>
+      <p data-i18n="exp.intro">Doctoral research at ÉTS Montréal, plus building, teaching, and leading IT at UCAS in Gaza.</p>
     </div>
 
     <div class="timeline">
       <div class="tl now reveal">
         <div class="when">Sep 2025 — Present</div>
-        <h3>PhD Researcher, Software Engineering</h3>
+        <h3 data-i18n="exp.r1.title">PhD Researcher, Software Engineering</h3>
         <div class="org">École de technologie supérieure (ÉTS), Université du Québec — Montréal</div>
         <ul>
-          <li>Empirical research on agentic AI systems and autonomous code generation, measuring the reliability of AI-generated code and agentic pull requests.</li>
-          <li>First-author study (MSR 2026) on why maintainers reject agent-proposed fixes.</li>
-          <li>Investigating prompt engineering and LLM-based agents in real development workflows.</li>
+          <li data-i18n="exp.r1.b1">Empirical research on agentic AI systems and autonomous code generation, measuring the reliability of AI-generated code and agentic pull requests.</li>
+          <li data-i18n="exp.r1.b2">First-author study (MSR 2026) on why maintainers reject agent-proposed fixes.</li>
+          <li data-i18n="exp.r1.b3">Investigating prompt engineering and LLM-based agents in real development workflows.</li>
         </ul>
       </div>
       <div class="tl reveal">
         <div class="when">Jan 2025 — May 2026</div>
-        <h3>Head of Computer Center Department</h3>
+        <h3 data-i18n="exp.r2.title">Head of Computer Center Department</h3>
         <div class="org">University College of Applied Sciences (UCAS) — Gaza</div>
         <ul>
-          <li>Led three core units: Programming, Networking, and Maintenance &amp; Technical Support.</li>
-          <li>Owned annual budgeting, infrastructure development, and IT policy formulation.</li>
-          <li>Directed an Oracle-to-web migration serving 500+ users and guided new IT solutions.</li>
+          <li data-i18n="exp.r2.b1">Led three core units: Programming, Networking, and Maintenance &amp; Technical Support.</li>
+          <li data-i18n="exp.r2.b2">Owned annual budgeting, infrastructure development, and IT policy formulation.</li>
+          <li data-i18n="exp.r2.b3">Directed an Oracle-to-web migration serving 500+ users and guided new IT solutions.</li>
         </ul>
       </div>
       <div class="tl reveal">
         <div class="when">Sep 2023 — Present</div>
-        <h3>Lecturer, Information Technology</h3>
+        <h3 data-i18n="exp.r3.title">Lecturer, Information Technology</h3>
         <div class="org">University College of Applied Sciences (UCAS) — Gaza</div>
         <ul>
-          <li>Teach Software Engineering, Database Systems, Networking, and Programming (Java, Python, Android).</li>
-          <li>Design syllabi, projects, and lab exercises; supervise graduation projects.</li>
-          <li>Integrate LMS tools (Moodle, Google Classroom) and contribute to curriculum design.</li>
+          <li data-i18n="exp.r3.b1">Teach Software Engineering, Database Systems, Networking, and Programming (Java, Python, Android).</li>
+          <li data-i18n="exp.r3.b2">Design syllabi, projects, and lab exercises; supervise graduation projects.</li>
+          <li data-i18n="exp.r3.b3">Integrate LMS tools (Moodle, Google Classroom) and contribute to curriculum design.</li>
         </ul>
       </div>
       <div class="tl reveal">
         <div class="when">2021 — 2023</div>
-        <h3>Teaching Assistant (Part-Time)</h3>
+        <h3 data-i18n="exp.r4.title">Teaching Assistant (Part-Time)</h3>
         <div class="org">UCAS &amp; Al-Azhar University — Gaza</div>
         <ul>
-          <li>Ran labs in programming and Android development (Android Studio, Java).</li>
-          <li>Graded assessments with consistent rubrics; prepared exams and lab documentation.</li>
+          <li data-i18n="exp.r4.b1">Ran labs in programming and Android development (Android Studio, Java).</li>
+          <li data-i18n="exp.r4.b2">Graded assessments with consistent rubrics; prepared exams and lab documentation.</li>
         </ul>
       </div>
     </div>
@@ -626,46 +646,46 @@
 <section id="education">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Education</span>
-      <h2>Academic background</h2>
-      <p>From a diploma in Gaza to a doctorate in Montréal — a decade of computer science and software engineering.</p>
+      <span class="eyebrow" data-i18n="edu.eyebrow">Education</span>
+      <h2 data-i18n="edu.h2">Academic background</h2>
+      <p data-i18n="edu.intro">From a diploma in Gaza to a doctorate in Montréal — a decade of computer science and software engineering.</p>
     </div>
 
     <div class="timeline">
       <div class="tl now reveal">
         <div class="when">Sep 2025 — Present</div>
-        <h3>Ph.D. in Software Engineering</h3>
+        <h3 data-i18n="edu.d1.title">Ph.D. in Software Engineering</h3>
         <div class="org">École de technologie supérieure (ÉTS), Université du Québec — Montréal</div>
         <ul>
-          <li>Research focus: AI for Software Engineering, with emphasis on agentic AI and autonomous code generation.</li>
-          <li>Funded by the FRQ "Science en Exil" doctoral fellowship (CAD $56,250, 2025–2028).</li>
+          <li data-i18n="edu.d1.b1">Research focus: AI for Software Engineering, with emphasis on agentic AI and autonomous code generation.</li>
+          <li data-i18n="edu.d1.b2">Funded by the FRQ "Science en Exil" doctoral fellowship (CAD $56,250, 2025–2028).</li>
         </ul>
       </div>
       <div class="tl reveal">
         <div class="when">2021 — 2025</div>
-        <h3>M.Sc. in Information Technology</h3>
+        <h3 data-i18n="edu.d2.title">M.Sc. in Information Technology</h3>
         <div class="org">Islamic University of Gaza</div>
         <ul>
-          <li>Focused on machine learning, data science, and deep learning.</li>
-          <li><em>Thesis: "Evaluating Open-Source LLMs for Automated Essay Scoring: The Critical Role of Prompt Design."</em></li>
+          <li data-i18n="edu.d2.b1">Focused on machine learning, data science, and deep learning.</li>
+          <li data-i18n="edu.d2.b2"><em>Thesis: "Evaluating Open-Source LLMs for Automated Essay Scoring: The Critical Role of Prompt Design."</em></li>
         </ul>
       </div>
       <div class="tl reveal">
         <div class="when">2018 — 2021</div>
-        <h3>B.Sc. in Mobile Computing &amp; Smart Device Applications</h3>
+        <h3 data-i18n="edu.d3.title">B.Sc. in Mobile Computing &amp; Smart Device Applications</h3>
         <div class="org">Islamic University of Gaza</div>
         <ul>
-          <li>Specialized in mobile app development and embedded systems.</li>
-          <li>Graduated with distinction.</li>
+          <li data-i18n="edu.d3.b1">Specialized in mobile app development and embedded systems.</li>
+          <li data-i18n="edu.d3.b2">Graduated with distinction.</li>
         </ul>
       </div>
       <div class="tl reveal">
         <div class="when">2016 — 2018</div>
-        <h3>Diploma in Database &amp; Programming</h3>
+        <h3 data-i18n="edu.d4.title">Diploma in Database &amp; Programming</h3>
         <div class="org">University College of Applied Sciences (UCAS) — Gaza</div>
         <ul>
-          <li>Foundations in software development and database systems.</li>
-          <li>Built several practical web, desktop, and mobile projects.</li>
+          <li data-i18n="edu.d4.b1">Foundations in software development and database systems.</li>
+          <li data-i18n="edu.d4.b2">Built several practical web, desktop, and mobile projects.</li>
         </ul>
       </div>
     </div>
@@ -676,30 +696,30 @@
 <section id="recognition">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="eyebrow">Funding &amp; recognition</span>
-      <h2>Backed work</h2>
+      <span class="eyebrow" data-i18n="rec.eyebrow">Funding &amp; recognition</span>
+      <h2 data-i18n="rec.h2">Backed work</h2>
     </div>
     <div class="cols">
       <div class="panel reveal">
-        <span class="eyebrow">Fellowships &amp; grants</span>
+        <span class="eyebrow" data-i18n="rec.p1">Fellowships &amp; grants</span>
         <div class="award">
-          <h4>Science en Exil Scholarship — Doctoral <span class="yr">2025–28</span></h4>
-          <p>Competitive, merit-based doctoral funding from the Fonds de recherche du Québec (FRQ), CAD&nbsp;$56,250 over three years.</p>
+          <h4><span data-i18n="rec.a1.title">Science en Exil Scholarship — Doctoral</span> <span class="yr">2025–28</span></h4>
+          <p data-i18n="rec.a1.desc">Competitive, merit-based doctoral funding from the Fonds de recherche du Québec (FRQ), CAD&nbsp;$56,250 over three years.</p>
         </div>
         <div class="award">
-          <h4>Best Paper Award <span class="yr">2023</span></h4>
-          <p>International Conference on Business and Technology (ICBT Istanbul) — machine learning for education.</p>
+          <h4><span data-i18n="rec.a2.title">Best Paper Award</span> <span class="yr">2023</span></h4>
+          <p data-i18n="rec.a2.desc">International Conference on Business and Technology (ICBT Istanbul) — machine learning for education.</p>
         </div>
       </div>
       <div class="panel reveal">
-        <span class="eyebrow">Supervised &amp; awarded</span>
+        <span class="eyebrow" data-i18n="rec.p2">Supervised &amp; awarded</span>
         <div class="award">
-          <h4>SILO — Sign Language Translation <span class="yr">2026</span></h4>
-          <p>Supervised the student project that won 1st Place, Secure Digital Innovation 2026 (PCSAi) — bidirectional ASL↔text via deep learning, computer vision, and a real-time 3D avatar.</p>
+          <h4><span data-i18n="rec.a3.title">SILO — Sign Language Translation</span> <span class="yr">2026</span></h4>
+          <p data-i18n="rec.a3.desc">Supervised the student project that won 1st Place, Secure Digital Innovation 2026 (PCSAi) — bidirectional ASL↔text via deep learning, computer vision, and a real-time 3D avatar.</p>
         </div>
         <div class="award">
-          <h4>Reviewer — IE2026 Doctoral Colloquium <span class="yr">2026</span></h4>
-          <p>Peer review for the 22nd International Conference on Intelligent Environments.</p>
+          <h4><span data-i18n="rec.a4.title">Reviewer — IE2026 Doctoral Colloquium</span> <span class="yr">2026</span></h4>
+          <p data-i18n="rec.a4.desc">Peer review for the 22nd International Conference on Intelligent Environments.</p>
         </div>
       </div>
     </div>
@@ -710,22 +730,22 @@
 <section id="about">
   <div class="wrap">
     <div class="sec-head reveal" style="max-width:72ch">
-      <span class="eyebrow">About</span>
-      <h2>Software engineering, with the AI held to account</h2>
-      <p>AI coding agents now open pull requests, refactor code, and propose fixes — yet a large share of that work is quietly discarded. My research treats those rejections as data: what does the gap between what an agent produces and what a maintainer will accept tell us about building AI that developers can actually trust? I work empirically, grounded in real repositories and real review decisions, across AI for software engineering, automated program repair, and large language models.</p>
+      <span class="eyebrow" data-i18n="about.eyebrow">About</span>
+      <h2 data-i18n="about.h2">Software engineering, with the AI held to account</h2>
+      <p data-i18n="about.p">AI coding agents now open pull requests, refactor code, and propose fixes — yet a large share of that work is quietly discarded. My research treats those rejections as data: what does the gap between what an agent produces and what a maintainer will accept tell us about building AI that developers can actually trust? I work empirically, grounded in real repositories and real review decisions, across AI for software engineering, automated program repair, and large language models.</p>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <div class="contact wrap" id="contact">
-  <span class="eyebrow" style="justify-content:center">Open to collaboration</span>
-  <h2>Let&rsquo;s build trustworthy AI for software</h2>
-  <p>I welcome inquiries about research collaborations, academic positions, and anything at the intersection of agentic AI and software engineering.</p>
+  <span class="eyebrow" style="justify-content:center" data-i18n="contact.eyebrow">Open to collaboration</span>
+  <h2 data-i18n="contact.h2">Let&rsquo;s build trustworthy AI for software</h2>
+  <p data-i18n="contact.p">I welcome inquiries about research collaborations, academic positions, and anything at the intersection of agentic AI and software engineering.</p>
   <div class="links">
     <a href="mailto:m.abujadallah@gmail.com">
       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="m2 4 6 4.5L14 4" stroke="currentColor" stroke-width="1.4"/></svg>
-      Email
+      <span data-i18n="contact.email">Email</span>
     </a>
     <a href="https://scholar.google.com/citations?user=rj5uozAAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
     <a href="https://orcid.org/0009-0009-6800-0481" target="_blank" rel="noopener">ORCID</a>
@@ -749,8 +769,8 @@
 
 <footer>
   <div class="wrap foot-inner">
-    <span>© 2026 Mahmoud S. Y. Abujadallah</span>
-    <span>ÉTS Montréal · Gaza, Palestine</span>
+    <span data-i18n="footer.copy">© 2026 Mahmoud S. Y. Abujadallah</span>
+    <span data-i18n="footer.loc">ÉTS Montréal · Gaza, Palestine</span>
   </div>
 </footer>
 
@@ -777,6 +797,103 @@
       try{ localStorage.setItem('theme', dark ? 'light' : 'dark'); }catch(e){}
       sync();
     });
+  })();
+
+  // language toggle (EN / AR), persisted, full RTL
+  (function(){
+    const btn = document.getElementById('langToggle');
+    const root = document.documentElement;
+    const nodes = document.querySelectorAll('[data-i18n]');
+    const en = {};
+    nodes.forEach(el => { en[el.getAttribute('data-i18n')] = el.innerHTML; });
+
+    const ar = {
+      'skip':'تخطَّ إلى المحتوى',
+      'nav.research':'الأبحاث','nav.experience':'الخبرة','nav.education':'التعليم','nav.recognition':'التكريم','nav.about':'نبذة','nav.cta':'تواصل معي',
+      'hero.eyebrow':'الذكاء الاصطناعي لهندسة البرمجيات',
+      'hero.name':'محمود أبو جادالله',
+      'hero.sub':'باحث دكتوراه · جامعة ÉTS مونتريال',
+      'hero.lead':'أدرس لماذا تُرفَض إسهامات وكلاء البرمجة بالذكاء الاصطناعي — وما الذي يلزم لجعل الأنظمة المستقلة القائمة على نماذج اللغة الكبيرة (LLM) زملاءَ عملٍ جديرين بالثقة.',
+      'hero.btnRead':'اطّلع على الأبحاث',
+      'pub.eyebrow':'المنشورات',
+      'pub.h2':'أوراق بحثية، مُتتبَّعة كطلبات دمج (Pull Requests)',
+      'pub.intro':'كل إسهام يحمل حالته الحقيقية — مُدمَج في مؤتمر أو مجلة، أو قيد المراجعة، أو مسودة منشورة.',
+      'exp.eyebrow':'الخبرة',
+      'exp.h2':'الأدوار والمسؤوليات',
+      'exp.intro':'أبحاث الدكتوراه في جامعة ÉTS مونتريال، إلى جانب بناء وتدريس وقيادة تقنية المعلومات في الكلية الجامعية للعلوم التطبيقية (UCAS) بغزة.',
+      'exp.r1.title':'باحث دكتوراه، هندسة البرمجيات',
+      'exp.r1.b1':'أبحاث تجريبية على أنظمة الذكاء الاصطناعي الوكيلة (Agentic AI) وتوليد الشيفرة المستقل، مع قياس موثوقية الشيفرة المولّدة بالذكاء الاصطناعي وطلبات الدمج الوكيلة.',
+      'exp.r1.b2':'دراسة كمؤلف رئيسي (MSR 2026) حول أسباب رفض المشرفين للإصلاحات المقترحة من الوكلاء.',
+      'exp.r1.b3':'دراسة هندسة الموجِّهات (Prompt Engineering) ووكلاء نماذج اللغة الكبيرة في سير عمل التطوير الحقيقي.',
+      'exp.r2.title':'رئيس قسم مركز الحاسوب',
+      'exp.r2.b1':'قيادة ثلاث وحدات رئيسية: البرمجة، والشبكات، والصيانة والدعم الفني.',
+      'exp.r2.b2':'الإشراف على الموازنة السنوية، وتطوير البنية التحتية، وصياغة سياسات تقنية المعلومات.',
+      'exp.r2.b3':'إدارة عملية ترحيل من Oracle إلى منصات ويب تخدم أكثر من 500 مستخدم، وتوجيه حلول تقنية جديدة.',
+      'exp.r3.title':'محاضر، تقنية المعلومات',
+      'exp.r3.b1':'تدريس هندسة البرمجيات، ونظم قواعد البيانات، والشبكات، والبرمجة (Java وPython وAndroid).',
+      'exp.r3.b2':'تصميم المناهج والمشاريع وتمارين المختبر، والإشراف على مشاريع التخرج.',
+      'exp.r3.b3':'دمج أدوات إدارة التعلُّم (Moodle وGoogle Classroom) والمساهمة في تصميم المناهج.',
+      'exp.r4.title':'مساعد تدريس (بدوام جزئي)',
+      'exp.r4.b1':'إدارة مختبرات في البرمجة وتطوير تطبيقات Android (Android Studio وJava).',
+      'exp.r4.b2':'تقييم الاختبارات وفق معايير موحّدة، وإعداد الامتحانات وتوثيق المختبرات.',
+      'edu.eyebrow':'التعليم',
+      'edu.h2':'الخلفية الأكاديمية',
+      'edu.intro':'من دبلوم في غزة إلى دكتوراه في مونتريال — عقد من علوم الحاسوب وهندسة البرمجيات.',
+      'edu.d1.title':'دكتوراه في هندسة البرمجيات',
+      'edu.d1.b1':'محور البحث: الذكاء الاصطناعي لهندسة البرمجيات، مع التركيز على الذكاء الاصطناعي الوكيل وتوليد الشيفرة المستقل.',
+      'edu.d1.b2':'مموَّلة من زمالة «Science en Exil» للدكتوراه من صندوق البحث في كيبيك (FRQ) — 56,250 دولارًا كنديًا (2025–2028).',
+      'edu.d2.title':'ماجستير في تقنية المعلومات',
+      'edu.d2.b1':'تركيز على تعلُّم الآلة وعلم البيانات والتعلُّم العميق.',
+      'edu.d2.b2':'<em>الأطروحة: «Evaluating Open-Source LLMs for Automated Essay Scoring: The Critical Role of Prompt Design».</em>',
+      'edu.d3.title':'بكالوريوس في حوسبة الأجهزة المحمولة وتطبيقات الأجهزة الذكية',
+      'edu.d3.b1':'تخصص في تطوير تطبيقات الأجهزة المحمولة والأنظمة المدمجة.',
+      'edu.d3.b2':'التخرج بمرتبة الشرف.',
+      'edu.d4.title':'دبلوم في قواعد البيانات والبرمجة',
+      'edu.d4.b1':'أساسيات تطوير البرمجيات ونظم قواعد البيانات.',
+      'edu.d4.b2':'بناء عدة مشاريع عملية للويب وسطح المكتب والأجهزة المحمولة.',
+      'rec.eyebrow':'التمويل والتكريم',
+      'rec.h2':'عملٌ مدعوم',
+      'rec.p1':'الزمالات والمنح',
+      'rec.p2':'مشاريع بإشرافي ومكرّمة',
+      'rec.a1.title':'زمالة Science en Exil — للدكتوراه',
+      'rec.a1.desc':'تمويل تنافسي قائم على الجدارة لطلبة الدكتوراه من صندوق البحث في كيبيك (FRQ)، بقيمة 56,250 دولارًا كنديًا على مدى ثلاث سنوات.',
+      'rec.a2.title':'جائزة أفضل ورقة بحثية',
+      'rec.a2.desc':'المؤتمر الدولي للأعمال والتقنية (ICBT إسطنبول) — تعلُّم الآلة في التعليم.',
+      'rec.a3.title':'SILO — ترجمة لغة الإشارة',
+      'rec.a3.desc':'الإشراف على مشروع طلابي فاز بالمركز الأول في مسابقة Secure Digital Innovation 2026 (PCSAi) — ترجمة ثنائية الاتجاه بين لغة الإشارة الأمريكية (ASL) والنص عبر التعلُّم العميق والرؤية الحاسوبية وأفتار ثلاثي الأبعاد آني.',
+      'rec.a4.title':'محكِّم — IE2026 الملتقى البحثي للدكتوراه',
+      'rec.a4.desc':'مراجعة الأقران للمؤتمر الدولي الثاني والعشرين للبيئات الذكية.',
+      'about.eyebrow':'نبذة',
+      'about.h2':'هندسة البرمجيات، مع مساءلة الذكاء الاصطناعي',
+      'about.p':'يفتح وكلاء البرمجة بالذكاء الاصطناعي اليوم طلبات دمج، ويعيدون هيكلة الشيفرة، ويقترحون إصلاحات — ومع ذلك يُهمَل جزء كبير من هذا العمل بهدوء. تتعامل أبحاثي مع حالات الرفض هذه بوصفها بيانات: ماذا تخبرنا الفجوة بين ما يُنتجه الوكيل وما يقبله المشرف عن بناء ذكاء اصطناعي يثق به المطوّرون فعلًا؟ أعمل تجريبيًا، مستندًا إلى مستودعات حقيقية وقرارات مراجعة حقيقية، عبر الذكاء الاصطناعي لهندسة البرمجيات، والإصلاح الآلي للبرامج، ونماذج اللغة الكبيرة.',
+      'contact.eyebrow':'منفتح على التعاون',
+      'contact.h2':'لنبنِ ذكاءً اصطناعيًا جديرًا بالثقة للبرمجيات',
+      'contact.p':'أرحّب بالاستفسارات حول التعاون البحثي، والمناصب الأكاديمية، وأي موضوع عند تقاطع الذكاء الاصطناعي الوكيل وهندسة البرمجيات.',
+      'contact.email':'البريد الإلكتروني',
+      'footer.copy':'© 2026 محمود س. ي. أبو جادالله',
+      'footer.loc':'ÉTS مونتريال · غزة، فلسطين'
+    };
+
+    function apply(lang){
+      const isAr = lang === 'ar';
+      nodes.forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        el.innerHTML = isAr ? (ar[k] != null ? ar[k] : en[k]) : en[k];
+      });
+      root.lang = lang;
+      root.dir = isAr ? 'rtl' : 'ltr';
+      if(btn){
+        btn.textContent = isAr ? 'EN' : 'ع';
+        btn.setAttribute('aria-label', isAr ? 'Switch language to English' : 'Switch language to Arabic');
+        btn.title = isAr ? 'English' : 'العربية';
+      }
+      try{ localStorage.setItem('lang', lang); }catch(e){}
+    }
+
+    let cur = 'en';
+    try{ cur = localStorage.getItem('lang') || 'en'; }catch(e){}
+    if(cur === 'ar') apply('ar');
+    if(btn) btn.addEventListener('click', ()=> apply(root.lang === 'ar' ? 'en' : 'ar'));
   })();
 
   // hero: play the diff lines, then count the headline stat up from 0
