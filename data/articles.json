@@ -2,6 +2,18 @@
   "source": "https://medium.com/@mabujadallah",
   "items": [
     {
+      "title": "Half of AI-Generated Bug Fixes Get Rejected. We Read 306 of Them to Find Out Why.",
+      "url": "https://medium.com/@mabujadallah/half-of-ai-generated-bug-fixes-get-rejected-we-read-306-of-them-to-find-out-why-59e8ed4eaa41?source=rss-8643104a94bb------2",
+      "date": "2026-06-21",
+      "snippet": "There’s a quiet assumption baked into the current wave of coding agents: point one at a bug, let it open a pull request, and a good chunk of the time you’ll get a mergeable fix. Gi…",
+      "tags": [
+        "pull-request",
+        "ai-agent",
+        "github"
+      ],
+      "image": "https://cdn-images-1.medium.com/max/1024/1*yyAGOCPFnvNB3RzzwrryhQ.png"
+    },
+    {
       "title": "Cursor Is Quietly Becoming an Agent Operating System",
       "url": "https://medium.com/@mabujadallah/cursor-is-quietly-becoming-an-agent-operating-system-1bc35a6fe226?source=rss-8643104a94bb------2",
       "date": "2026-06-19",
@@ -26,5 +38,5 @@
       "image": "https://cdn-images-1.medium.com/max/800/1*CqzIjuIv-mvjXBECmc4k9A.png"
     }
   ],
-  "updated": "2026-06-20T21:41:27Z"
+  "updated": "2026-06-21T20:52:16Z"
 }
