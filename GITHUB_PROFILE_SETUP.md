@@ -7,7 +7,7 @@ Use these values in your GitHub profile so Google can connect your name to your 
 - Name: Mahmoud S. Y. Abujadallah
 - Bio: PhD Student at ETS Montreal | AI for Software Engineering | Agentic AI | Large Language Models
 - Location: Montreal, Canada
-- Website: https://mabujadallah.github.io/mahmoud_abujadallah/
+- Website: https://mabujadallah.github.io/
 
 ## 2) Profile README Repository
 
@@ -22,7 +22,7 @@ Add this to the README:
 
 PhD Student at ETS Montreal focused on AI for Software Engineering, Agentic AI, and Large Language Models.
 
-- Website: https://mabujadallah.github.io/mahmoud_abujadallah/
+- Website: https://mabujadallah.github.io/
 - GitHub: https://github.com/mabujadallah
 - LinkedIn: https://www.linkedin.com/in/mahmoud-abujadallah-88104a176/
 
@@ -42,4 +42,4 @@ Pin 4 to 6 repositories with strong names and descriptions so your profile page 
 After updates are published, request indexing for:
 
 - https://github.com/mabujadallah
-- https://mabujadallah.github.io/mahmoud_abujadallah/
+- https://mabujadallah.github.io/

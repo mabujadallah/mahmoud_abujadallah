@@ -4,7 +4,7 @@ A modern, responsive personal portfolio website showcasing my academic and profe
 
 ## Live Site
 
-Visit: **https://mabujadallah.github.io/mahmoud_abujadallah/**
+Visit: **https://mabujadallah.github.io/**
 
 ## Features
 
