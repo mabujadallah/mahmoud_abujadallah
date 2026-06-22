@@ -2,6 +2,18 @@
   "source": "https://medium.com/@mabujadallah",
   "items": [
     {
+      "title": "39.5 Million Pull Requests: A Dataset for the Age of AI Coding Agents",
+      "url": "https://medium.com/@mabujadallah/39-5-million-pull-requests-a-dataset-for-the-age-of-ai-coding-agents-52e88743d84f?source=rss-8643104a94bb------2",
+      "date": "2026-06-22",
+      "snippet": "A year ago, an AI agent opening a pull request on GitHub was a novelty worth a screenshot. Today it’s infrastructure. Claude Code, Copilot’s coding agent, Devin, Cursor, and others…",
+      "tags": [
+        "ai-agent",
+        "software-engineering",
+        "github"
+      ],
+      "image": "https://cdn-images-1.medium.com/max/1024/1*CrAK0GwbYN-l1iBLmDKRJw.png"
+    },
+    {
       "title": "Half of AI-Generated Bug Fixes Get Rejected. We Read 306 of Them to Find Out Why.",
       "url": "https://medium.com/@mabujadallah/half-of-ai-generated-bug-fixes-get-rejected-we-read-306-of-them-to-find-out-why-59e8ed4eaa41?source=rss-8643104a94bb------2",
       "date": "2026-06-21",
@@ -38,5 +50,5 @@
       "image": "https://cdn-images-1.medium.com/max/800/1*CqzIjuIv-mvjXBECmc4k9A.png"
     }
   ],
-  "updated": "2026-06-21T20:52:16Z"
+  "updated": "2026-06-22T22:39:37Z"
 }
