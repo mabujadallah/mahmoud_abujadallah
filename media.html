@@ -114,7 +114,8 @@
 
   function card(href, thumbHtml, title, sub, metaHtml){
     const a = document.createElement('a');
-    a.className='card'; a.href=href; a.target='_blank'; a.rel='noopener';
+    a.className='card'; a.href=href;
+    if(/^https?:/i.test(href)){ a.target='_blank'; a.rel='noopener'; }
     a.innerHTML = thumbHtml +
       '<div class="body"><h3>'+esc(title)+'</h3>'+
       (sub?'<p>'+esc(sub)+'</p>':'')+
@@ -132,7 +133,7 @@
   }
 
   render('data/articles.json','articles', a => card(
-    a.url,
+    a.local || a.url,
     a.image ? '<img class="thumb" loading="lazy" alt="'+esc(a.title)+'" src="'+esc(a.image)+'">' : '',
     a.title, a.snippet,
     '<span>'+esc(a.date)+'</span>'+(a.tags&&a.tags[0]?'<span>#'+esc(a.tags[0])+'</span>':'')

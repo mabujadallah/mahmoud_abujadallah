@@ -30,4 +30,35 @@
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://mabujadallah.github.io/posts/why-a-two-word-reply-can-cost-40-of-your-ai-budget.html</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mabujadallah.github.io/posts/39-5-million-pull-requests-a-dataset-for-the-age-of-ai-coding-agents.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mabujadallah.github.io/posts/half-of-ai-generated-bug-fixes-get-rejected-we-read-306-of-them-to-find-out-why.html</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mabujadallah.github.io/posts/cursor-is-quietly-becoming-an-agent-operating-system.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://mabujadallah.github.io/posts/how-ai-coding-agents-changed-the-way-i-build-android-apps.html</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
