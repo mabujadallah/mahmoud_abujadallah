@@ -164,7 +164,7 @@ PAGE = Template("""<!doctype html>
 <meta name="twitter:image" content="$image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&family=Cairo:wght@600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/site.css">
 <script>
   document.documentElement.classList.add('js');
@@ -199,24 +199,27 @@ PAGE = Template("""<!doctype html>
 </header>
 
 <main id="main">
-  <article class="wrap">
-    <div class="article-head">
-      <a class="back" href="../media.html">← Writing &amp; Talks</a>
-      <h1>$title_text</h1>
-      <div class="article-meta">
-        <span>$pretty_date</span>
-        <span>$reading min read</span>
-        <a href="$canonical" target="_blank" rel="noopener">Originally on Medium ↗</a>
+  <div class="wrap $layout_class">
+    <article class="article-main">
+      <div class="article-head">
+        <a class="back" href="../media.html">← Writing &amp; Talks</a>
+        <h1>$title_text</h1>
+        <div class="article-meta">
+          <span>$pretty_date</span>
+          <span>$reading min read</span>
+          <a href="$canonical" target="_blank" rel="noopener">Originally on Medium ↗</a>
+        </div>
       </div>
-    </div>
-    <div class="prose">
+      <div class="prose">
 $body_html
-    </div>
-    <div class="article-foot">
-      <a class="read-on-medium" href="$canonical" target="_blank" rel="noopener">Read &amp; clap on Medium ↗</a>
-      <a class="back" href="../media.html">← All writing &amp; talks</a>
-    </div>
-  </article>
+      </div>
+      <div class="article-foot">
+        <a class="read-on-medium" href="$canonical" target="_blank" rel="noopener">Read &amp; clap on Medium ↗</a>
+        <a class="back" href="../media.html">← All writing &amp; talks</a>
+      </div>
+    </article>
+$rail_html
+  </div>
 </main>
 
 <footer>
@@ -231,7 +234,36 @@ $body_html
 """)
 
 
-def render_post(item):
+def lazyload_images(content):
+    """Defer offscreen images so the page paints sooner (less scroll lag)."""
+    return re.sub(r"<img(?![^>]*\bloading=)",
+                  '<img loading="lazy" decoding="async"', content or "")
+
+
+def render_rail(all_posts, current_slug, limit=6):
+    """Right-hand 'More writing' list of the other posts."""
+    others = [p for p in all_posts if p["slug"] != current_slug][:limit]
+    if not others:
+        return "", "article-layout solo"
+    items = "\n".join(
+        f'          <li><a href="{p["slug"]}.html">'
+        f'<span class="rail-title">{esc(p["title"])}</span>'
+        f'<span class="rail-date">{esc(pretty_date(p["date"]))}</span></a></li>'
+        for p in others)
+    rail = ('    <aside class="article-rail" aria-label="More writing">\n'
+            '      <div class="rail-sticky">\n'
+            '        <span class="rail-label">More writing</span>\n'
+            '        <ul class="rail-list">\n'
+            f'{items}\n'
+            '        </ul>\n'
+            '        <a class="rail-all" href="../media.html">All writing &amp; talks →</a>\n'
+            '      </div>\n'
+            '    </aside>')
+    return rail, "article-layout"
+
+
+def render_post(item, all_posts):
+    rail_html, layout_class = render_rail(all_posts, item["slug"])
     return PAGE.substitute(
         title_text=esc(item["title"]),
         author=esc(AUTHOR),
@@ -242,7 +274,9 @@ def render_post(item):
         date=esc(item.get("date", ""), quote=True),
         pretty_date=esc(pretty_date(item.get("date", ""))),
         reading=reading_time(item.get("content", "")),
-        body_html=item.get("content", ""),
+        body_html=lazyload_images(item.get("content", "")),
+        layout_class=layout_class,
+        rail_html=rail_html,
         year=datetime.date.today().year,
     )
 
@@ -250,7 +284,7 @@ def render_post(item):
 def write_posts(posts):
     POSTS.mkdir(exist_ok=True)
     for p in posts:
-        (POSTS / f"{p['slug']}.html").write_text(render_post(p), "utf-8")
+        (POSTS / f"{p['slug']}.html").write_text(render_post(p, posts), "utf-8")
     print(f"rendered {len(posts)} post page(s) in posts/")
 
 

@@ -6,15 +6,21 @@
   'use strict';
 
   // Scroll-progress bar (driven by the --scroll-progress custom property).
+  // rAF-throttled so the layout read (scrollHeight) happens at most once per
+  // frame instead of on every scroll event — keeps long pages smooth.
   (function () {
-    var root = document.documentElement;
-    function update() {
+    var root = document.documentElement, ticking = false;
+    function paint() {
+      ticking = false;
       var max = Math.max(1, root.scrollHeight - innerHeight);
       root.style.setProperty('--scroll-progress', Math.min(pageYOffset / max, 1).toFixed(4));
     }
-    update();
-    addEventListener('scroll', update, { passive: true });
-    addEventListener('resize', update);
+    function onScroll() {
+      if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+    }
+    paint();
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll, { passive: true });
   })();
 
   // Reveal-on-scroll: IntersectionObserver + a viewport pass + watchdog timers
