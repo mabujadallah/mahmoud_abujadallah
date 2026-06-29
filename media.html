@@ -75,6 +75,7 @@
 
     <section>
       <span class="eyebrow sub-eyebrow" data-i18n="media.articles">On Medium</span>
+      <div class="topic-filter" id="topicFilter" role="group" aria-label="Filter articles by topic" hidden></div>
       <div class="grid" id="articles"><div class="empty" data-i18n="loading">Loading…</div></div>
     </section>
 
@@ -132,12 +133,56 @@
     }).catch(()=>{ document.getElementById(mount).innerHTML='<div class="empty">'+(window.__failed||'Couldn’t load this feed.')+'</div>'; });
   }
 
-  render('data/articles.json','articles', a => card(
-    a.local || a.url,
-    a.image ? '<img class="thumb" loading="lazy" alt="'+esc(a.title)+'" src="'+esc(a.image)+'">' : '',
-    a.title, a.snippet,
-    '<span>'+esc(a.date)+'</span>'+(a.tags&&a.tags[0]?'<span>#'+esc(a.tags[0])+'</span>':'')
-  ));
+  // ---- articles + topic filter ----
+  (function(){
+    const mount = document.getElementById('articles');
+    const bar = document.getElementById('topicFilter');
+    fetch('data/articles.json').then(r=>r.json()).then(d=>{
+      const items = (d && d.items) || [];
+      if(!items.length){ mount.innerHTML='<div class="empty">'+(window.__empty||'Nothing here yet.')+'</div>'; return; }
+      mount.innerHTML='';
+      const counts = {};
+      items.forEach(a => {
+        const el = card(
+          a.local || a.url,
+          a.image ? '<img class="thumb" loading="lazy" alt="'+esc(a.title)+'" src="'+esc(a.image)+'">' : '',
+          a.title, a.snippet,
+          '<span>'+esc(a.date)+'</span>'+(a.tags&&a.tags[0]?'<span>#'+esc(a.tags[0])+'</span>':'')
+        );
+        el.dataset.tags = (a.tags||[]).join(' ');
+        mount.appendChild(el);
+        (a.tags||[]).forEach(t => counts[t] = (counts[t]||0) + 1);
+      });
+      buildFilter(items.length, counts);
+    }).catch(()=>{ mount.innerHTML='<div class="empty">'+(window.__failed||'Couldn’t load this feed.')+'</div>'; });
+
+    function buildFilter(total, counts){
+      const tags = Object.keys(counts).sort((a,b)=> counts[b]-counts[a] || a.localeCompare(b));
+      if(!bar || tags.length < 2) return; // nothing to filter
+      let html = '<button class="topic-chip is-active" type="button" data-tag="*" aria-pressed="true">All <span class="n">'+total+'</span></button>';
+      tags.forEach(t => {
+        html += '<button class="topic-chip" type="button" data-tag="'+esc(t)+'" aria-pressed="false">#'+esc(t.replace(/-/g,' '))+' <span class="n">'+counts[t]+'</span></button>';
+      });
+      bar.innerHTML = html;
+      bar.hidden = false;
+      const chips = bar.querySelectorAll('.topic-chip');
+      const cards = mount.querySelectorAll('.card');
+      bar.addEventListener('click', e => {
+        const btn = e.target.closest('.topic-chip');
+        if(!btn) return;
+        const tag = btn.getAttribute('data-tag');
+        chips.forEach(c => {
+          const on = c === btn;
+          c.classList.toggle('is-active', on);
+          c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        cards.forEach(c => {
+          const show = tag === '*' || (' '+c.dataset.tags+' ').indexOf(' '+tag+' ') > -1;
+          c.style.display = show ? '' : 'none';
+        });
+      });
+    }
+  })();
 
   render('data/videos.json','videos', v => card(
     v.url,
